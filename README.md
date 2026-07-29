@@ -1,6 +1,8 @@
-# 🏪 PamPam — Boutique Familiale
+# PamPam — Boutique
 
 Site vitrine de la boutique PamPam, située au Marché Massalassi (Adidogomé — Bokovissimé) à Lomé, Togo.
+
+**Lien du site :** https://pampam-iota.vercel.app
 
 ## Contenu
 
@@ -10,24 +12,38 @@ Site vitrine de la boutique PamPam, située au Marché Massalassi (Adidogomé �
 - Contact avec carte interactive, téléphone et WhatsApp
 - Mode sombre/clair
 
-## Déploiement
+## Déploiement (GitHub + Vercel)
 
-### 1. Va sur Vercel
+### 1. Créer le dépôt sur GitHub
 
-https://vercel.com/new
+- Va sur https://github.com/new
+- Nomme le dépôt `pampam`
+- Suis les instructions pour pusher le dossier en local :
 
-### 2. Importe le projet
+```bash
+git remote add origin https://github.com/bendictamangba/pampam.git
+git branch -M main
+git push -u origin main
+```
 
-- Clique sur **"Upload"** (pas "Import Git Repository")
-- Sélectionne le dossier `Site_pam_pam`
-- Vercel détecte automatiquement le projet (framework: `Other`)
+### 2. Importer sur Vercel
+
+- Va sur https://vercel.com/new
+- Sélectionne le dépôt `bendictamangba/pampam`
+- Laisse les paramètres par défaut (framework: `Other`)
 - Clique sur **"Deploy"**
 
-### 3. C'est en ligne !
+### 3. Mise à jour automatique
 
-- URL par défaut : `site-pam-pam.vercel.app`
-- Tu peux changer le nom dans les paramètres du projet
-- Possibilité d'ajouter un nom de domaine personnalisé plus tard
+Après chaque modification, il suffit de pusher sur GitHub :
+
+```bash
+git add .
+git commit -m "description des changements"
+git push origin main
+```
+
+Vercel rebuild et redéploie automatiquement le site.
 
 ## Statistiques
 
