@@ -1,54 +1,19 @@
 # PamPam — Boutique
 
-Site vitrine de la boutique PamPam, située au Marché Massalassi (Adidogomé — Bokovissimé) à Lomé, Togo.
+Site vitrine d'une boutique de proximité située au Marché Massalassi à Lomé (Togo), présentant ses services et produits, avec un design moderne adapté au mobile.
 
-**Lien du site :** https://pampam-iota.vercel.app
+**Lien :** [pampam-iota.vercel.app](https://pampam-iota.vercel.app)
 
-## Contenu
+## Fonctionnalités
 
-- Accueil avec présentation de la boutique
-- Services (tirage de plan, jus frais, pure water, épicerie)
-- Produits (pure water, boissons, vins, garri, chaussures, confiseries, papeterie, etc.)
-- Contact avec carte interactive, téléphone et WhatsApp
-- Mode sombre/clair
+- Page d'accueil dynamique avec animations
+- Sections Services et Produits
+- Carte interactive (OpenStreetMap)
+- Lien WhatsApp direct
+- Mode sombre / clair
+- Compteur de visites (GoatCounter)
 
-## Déploiement (GitHub + Vercel)
+## Stack
 
-### 1. Créer le dépôt sur GitHub
-
-- Va sur https://github.com/new
-- Nomme le dépôt `pampam`
-- Suis les instructions pour pusher le dossier en local :
-
-```bash
-git remote add origin https://github.com/bendictamangba/pampam.git
-git branch -M main
-git push -u origin main
-```
-
-### 2. Importer sur Vercel
-
-- Va sur https://vercel.com/new
-- Sélectionne le dépôt `bendictamangba/pampam`
-- Laisse les paramètres par défaut (framework: `Other`)
-- Clique sur **"Deploy"**
-
-### 3. Mise à jour automatique
-
-Après chaque modification, il suffit de pusher sur GitHub :
-
-```bash
-git add .
-git commit -m "description des changements"
-git push origin main
-```
-
-Vercel rebuild et redéploie automatiquement le site.
-
-## Statistiques
-
-GoatCounter est intégré pour compter les visites.
-
-## Tech
-
-HTML / CSS / JavaScript — site statique, sans base de données.
+- HTML5 / CSS3 / JavaScript (vanilla)
+- Déploiement continu via GitHub + Vercel
