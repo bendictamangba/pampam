@@ -1,0 +1,8 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{ Introduction }{3}{0}{1}
+\beamer@sectionintoc {2}{Présentation du besoin }{4}{0}{2}
+\beamer@sectionintoc {3}{ Analyse et Conception de l'application SITE IFNTI }{5}{0}{3}
+\beamer@sectionintoc {4}{Technologies utilisées}{9}{0}{4}
+\beamer@sectionintoc {5}{Démonstration de l'application}{11}{0}{5}
+\beamer@sectionintoc {6}{Difficultés et Améliorations possibles}{12}{0}{6}
+\beamer@sectionintoc {7}{MERCI POUR VOTRE ATTENTION}{15}{0}{7}
