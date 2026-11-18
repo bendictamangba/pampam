@@ -20,18 +20,22 @@
         Pam<span>Pam</span>
       </a>
       <div class="nav-right">
-        <button class="theme-toggle" aria-label="Basculer le thème">
+        <div class="lang-switch" role="group" data-i18n-aria="languageLabel" aria-label="Langue">
+          <button class="lang-btn active" type="button" data-lang="fr">FR</button>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <button class="lang-btn" type="button" data-lang="en">EN</button>
+        </div>
+        <button class="theme-toggle" aria-label="Basculer le thème" data-i18n-aria="themeToggle">
           <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <button class="menu-toggle" aria-label="Menu">
+        <button class="menu-toggle" aria-label="Menu" data-i18n-aria="menu">
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-links">
-          <li><a href="#accueil" class="active">Accueil</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#produits">Produits</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#accueil" class="active" data-i18n="navHome">Accueil</a></li>
+          <li><a href="#produits" data-i18n="navProducts">Produits</a></li>
+          <li><a href="#contact" data-i18n="navContact">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -46,296 +50,341 @@
     <div class="container hero-content">
       <div class="hero-badge">
         <span class="hero-badge-dot"></span>
-        Boutique — Marché Massalassi
+        <span data-i18n="heroBadge">Boutique — Marché Massalassi</span>
       </div>
       <h1>
-        <span class="hero-line hero-line-1">Bienvenue chez</span>
+        <span class="hero-line hero-line-1" data-i18n="heroWelcome">Bienvenue chez</span>
         <span class="hero-line hero-line-2">PamPam</span>
       </h1>
-      <p>Tirage de plan · Jus frais · Chaussures · Garri · Pure water · Calques · Chemises · Gobelets & bien plus</p>
-    </div>
-  </section>
-
-  <section id="services" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">· Services ·</span>
-        <h2>Tout ce qu'il vous faut,<br>sous un même toit</h2>
-        <p class="section-subtitle">Des services pensés pour votre quotidien, avec le sourire et le savoir-faire PamPam.</p>
-      </div>
-      <div class="services-grid">
-        <article class="service-card">
-          <div class="service-card-bg"></div>
-          <div class="service-card-inner">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/><path d="M19 20H5a1 1 0 0 1-1-1V8h16v11a1 1 0 0 1-1 1z"/></svg>
-            </div>
-            <h3>Tirage de Plan</h3>
-            <p>Impression, photocopie de documents, plans et fichiers en noir & blanc ou couleur.</p>
-          </div>
-        </article>
-        <article class="service-card">
-          <div class="service-card-bg"></div>
-          <div class="service-card-inner">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v2h6V5a3 3 0 0 0-3-3z"/><path d="M5 10h14l-1 11H6L5 10z"/><path d="M8 10V8"/><path d="M16 10V8"/></svg>
-            </div>
-            <h3>Jus Frais</h3>
-            <p>Jus naturels faits maison : gingembre, bissap, tamarin et bien d'autres saveurs.</p>
-          </div>
-        </article>
-        <article class="service-card">
-          <div class="service-card-bg"></div>
-          <div class="service-card-inner">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5a12.7 12.7 0 0 0-4-2.5 12.7 12.7 0 0 0-4 2.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/><path d="M12 2v3"/></svg>
-            </div>
-            <h3>Eaux</h3>
-            <p>Eau pure , fraîche et disponible à l'unité ou en pack.</p>
-          </div>
-        </article>
-        <article class="service-card">
-          <div class="service-card-bg"></div>
-          <div class="service-card-inner">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-            </div>
-            <h3>Épicerie</h3>
-            <p>Garri, boissons et produits de première nécessité, toujours disponibles.</p>
-          </div>
-        </article>
-      </div>
+      <p data-i18n="heroTagline">Tirage de plan · Jus frais · Chaussures · Garri · Pure water · Calques · Chemises · Gobelets &amp; bien plus</p>
     </div>
   </section>
 
   <section id="produits" class="section section-alt">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">· Produits ·</span>
-        <h2>Une sélection pensée<br>pour toute la famille</h2>
-        <p class="section-subtitle">Du quotidien aux occasions spéciales, retrouvez tout ce qu'il vous faut chez PamPam.</p>
+        <span class="section-tag" data-i18n="productsTag">· Produits ·</span>
+        <h2 data-i18n-html="productsTitle">Découvrez nos produits<br>par catégorie</h2>
+        <p class="section-subtitle" data-i18n="productsSubtitle">Du quotidien aux occasions spéciales, retrouvez tout ce qu'il vous faut chez PamPam.</p>
       </div>
-      <div class="products-grid">
-        <article class="product-card">
-          <figure class="product-image" data-count="2">
-            <div class="product-slider">
-              <img src="images/eaux/1.jpg" alt="Pure Water" loading="lazy">
-              <img src="images/eaux/2.jpg" alt="Pure Water" loading="lazy">
-            </div>
-            <div class="product-badge">Nouveau</div>
-            <button class="slide-btn slide-prev" aria-label="Image précédente">‹</button>
-            <button class="slide-btn slide-next" aria-label="Image suivante">›</button>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Pure Water</h3>
-            <p>Eau pure, fraîche et abordable.</p>
+
+      <!-- Tuiles de catégories (inspiré d'Assivito) -->
+      <h3 class="category-section-label" data-i18n="catSectionLabel">Nos catégories</h3>
+      <div class="category-grid">
+        <button type="button" class="category-card active" data-filter="all" aria-pressed="true">
+          <span class="category-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </span>
+          <span class="category-name" data-i18n="catAll">Tout voir</span>
+          <span class="category-count">14 <span data-i18n="catProducts">produits</span></span>
+        </button>
+        <button type="button" class="category-card" data-filter="boissons" aria-pressed="false">
+          <span class="category-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14l-2 16H7L5 4z"/><path d="M7 10h10"/></svg>
+          </span>
+          <span class="category-name" data-i18n="catDrinks">Boissons</span>
+          <span class="category-count">3 <span data-i18n="catProducts">produits</span></span>
+        </button>
+        <button type="button" class="category-card" data-filter="alimentation" aria-pressed="false">
+          <span class="category-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </span>
+          <span class="category-name" data-i18n="catFood">Alimentation</span>
+          <span class="category-count">2 <span data-i18n="catProducts">produits</span></span>
+        </button>
+        <button type="button" class="category-card" data-filter="emballage" aria-pressed="false">
+          <span class="category-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+          </span>
+          <span class="category-name" data-i18n="catPackaging">Emballage &amp; Jetables</span>
+          <span class="category-count">2 <span data-i18n="catProducts">produits</span></span>
+        </button>
+        <button type="button" class="category-card" data-filter="mode" aria-pressed="false">
+          <span class="category-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6l-4-2-4 2-4-2-4 2 2 4 2-1v11h8V9l2 1 2-4z"/></svg>
+          </span>
+          <span class="category-name" data-i18n="catFashion">Mode</span>
+          <span class="category-count">1 <span data-i18n="catProduct">produit</span></span>
+        </button>
+        <button type="button" class="category-card" data-filter="maison" aria-pressed="false">
+          <span class="category-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10z"/><path d="M9 21v-7h6v7"/></svg>
+          </span>
+          <span class="category-name" data-i18n="catHome">Maison &amp; Hygiène</span>
+          <span class="category-count">4 <span data-i18n="catProducts">produits</span></span>
+        </button>
+        <button type="button" class="category-card" data-filter="papeterie" aria-pressed="false">
+          <span class="category-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h6"/></svg>
+          </span>
+          <span class="category-name" data-i18n="catStationery">Impression &amp; Papeterie</span>
+          <span class="category-count">2 <span data-i18n="catProducts">produits</span></span>
+        </button>
+      </div>
+
+      <!-- Produits regroupés par catégorie -->
+      <div class="category-groups">
+
+        <div class="category-group" data-group="boissons">
+          <div class="category-group-head">
+            <h3 data-i18n="groupDrinks">Boissons</h3>
+            <p data-i18n="groupDrinksDesc">Eaux, jus frais, vins et boissons pour tous les goûts.</p>
           </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="3">
-            <div class="product-slider">
-              <img src="images/sachets/1.jpg" alt="Boissons en Sachet" loading="lazy">
-              <img src="images/sachets/2.jpg" alt="Boissons en Sachet" loading="lazy">
-              <img src="images/sachets/3.jpg" alt="Boissons en Sachet" loading="lazy">
-            </div>
-            <div class="product-badge">Populaire</div>
-            <button class="slide-btn slide-prev" aria-label="Image précédente">‹</button>
-            <button class="slide-btn slide-next" aria-label="Image suivante">›</button>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Sachets</h3>
-            <p>Sachets pratiques et solides pour l'emballage et la conservation.</p>
+          <div class="products-grid">
+            <article class="product-card">
+              <figure class="product-image" data-count="2">
+                <div class="product-slider">
+                  <img src="images/eaux/1.jpg" alt="Pure Water" data-i18n-alt="altPureWater" loading="lazy">
+                  <img src="images/eaux/2.jpg" alt="Pure Water" data-i18n-alt="altPureWater" loading="lazy">
+                </div>
+                <div class="product-badge" data-i18n="badgeNew">Nouveau</div>
+                <button class="slide-btn slide-prev" aria-label="Image précédente" data-i18n-aria="prevImage">‹</button>
+                <button class="slide-btn slide-next" aria-label="Image suivante" data-i18n-aria="nextImage">›</button>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pPureWater">Pure Water</h3>
+                <p data-i18n="pPureWaterDesc">Eau pure, fraîche et abordable.</p>
+              </div>
+            </article>
+            <article class="product-card">
+              <figure class="product-image" data-count="8">
+                <div class="product-slider">
+                  <img src="images/vins/1.jpg" alt="Vins" data-i18n-alt="altWines" loading="lazy">
+                  <img src="images/vins/2.jpg" alt="Vins" data-i18n-alt="altWines" loading="lazy">
+                  <img src="images/vins/3.jpg" alt="Vins" data-i18n-alt="altWines" loading="lazy">
+                  <img src="images/vins/4.jpg" alt="Vins" data-i18n-alt="altWines" loading="lazy">
+                  <img src="images/vins/5.jpg" alt="Vins" data-i18n-alt="altWines" loading="lazy">
+                  <img src="images/vins/6.jpg" alt="Vins" data-i18n-alt="altWines" loading="lazy">
+                  <img src="images/vins/7.jpg" alt="Vins" data-i18n-alt="altWines" loading="lazy">
+                  <img src="images/vins/8.jpg" alt="Vins" data-i18n-alt="altWines" loading="lazy">
+                </div>
+                <button class="slide-btn slide-prev" aria-label="Image précédente" data-i18n-aria="prevImage">‹</button>
+                <button class="slide-btn slide-next" aria-label="Image suivante" data-i18n-aria="nextImage">›</button>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pWines">Vins</h3>
+                <p data-i18n="pWinesDesc">Rouges, blancs et rosés pour toutes les célébrations.</p>
+              </div>
+            </article>
+            <article class="product-card">
+              <figure class="product-image" data-count="2">
+                <div class="product-slider">
+                  <img src="images/boissonsenergisantes/1.jpg" alt="Boissons Énergisantes" data-i18n-alt="altEnergy" loading="lazy">
+                  <img src="images/boissonsenergisantes/2.jpg" alt="Boissons Énergisantes" data-i18n-alt="altEnergy" loading="lazy">
+                </div>
+                <div class="product-badge" data-i18n="badgeNew">Nouveau</div>
+                <button class="slide-btn slide-prev" aria-label="Image précédente" data-i18n-aria="prevImage">‹</button>
+                <button class="slide-btn slide-next" aria-label="Image suivante" data-i18n-aria="nextImage">›</button>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pEnergy">Boissons Énergisantes</h3>
+                <p data-i18n="pEnergyDesc">Pour vous revitaliser et rester actif toute la journée.</p>
+              </div>
+            </article>
           </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="8">
-            <div class="product-slider">
-              <img src="images/vins/1.jpg" alt="Vins" loading="lazy">
-              <img src="images/vins/2.jpg" alt="Vins" loading="lazy">
-              <img src="images/vins/3.jpg" alt="Vins" loading="lazy">
-              <img src="images/vins/4.jpg" alt="Vins" loading="lazy">
-              <img src="images/vins/5.jpg" alt="Vins" loading="lazy">
-              <img src="images/vins/6.jpg" alt="Vins" loading="lazy">
-              <img src="images/vins/7.jpg" alt="Vins" loading="lazy">
-              <img src="images/vins/8.jpg" alt="Vins" loading="lazy">
-            </div>
-            <button class="slide-btn slide-prev" aria-label="Image précédente">‹</button>
-            <button class="slide-btn slide-next" aria-label="Image suivante">›</button>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Vins</h3>
-            <p>Rouges, blancs et rosés pour toutes les célébrations.</p>
+        </div>
+
+        <div class="category-group" data-group="alimentation">
+          <div class="category-group-head">
+            <h3 data-i18n="groupFood">Alimentation</h3>
+            <p data-i18n="groupFoodDesc">L'essentiel pour votre cuisine et vos repas.</p>
           </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="2">
-            <div class="product-slider">
-              <img src="images/boissonsenergisantes/1.jpg" alt="Boissons Énergisantes" loading="lazy">
-              <img src="images/boissonsenergisantes/2.jpg" alt="Boissons Énergisantes" loading="lazy">
-            </div>
-            <div class="product-badge">Nouveau</div>
-            <button class="slide-btn slide-prev" aria-label="Image précédente">‹</button>
-            <button class="slide-btn slide-next" aria-label="Image suivante">›</button>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Boissons Énergisantes</h3>
-            <p>Pour vous revitaliser et rester actif toute la journée.</p>
+          <div class="products-grid">
+            <article class="product-card">
+              <figure class="product-image" data-count="5">
+                <div class="product-slider">
+                  <img src="images/aliments/1.jpg" alt="Aliments" data-i18n-alt="altFood" loading="lazy">
+                  <img src="images/aliments/2.jpg" alt="Aliments" data-i18n-alt="altFood" loading="lazy">
+                  <img src="images/aliments/3.jpg" alt="Aliments" data-i18n-alt="altFood" loading="lazy">
+                  <img src="images/aliments/4.jpg" alt="Aliments" data-i18n-alt="altFood" loading="lazy">
+                  <img src="images/aliments/5.jpg" alt="Aliments" data-i18n-alt="altFood" loading="lazy">
+                </div>
+                <button class="slide-btn slide-prev" aria-label="Image précédente" data-i18n-aria="prevImage">‹</button>
+                <button class="slide-btn slide-next" aria-label="Image suivante" data-i18n-aria="nextImage">›</button>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pFood">Aliments</h3>
+                <p data-i18n="pFoodDesc">Garri, sucre et produits de première nécessité.</p>
+              </div>
+            </article>
+            <article class="product-card">
+              <figure class="product-image" data-count="1">
+                <div class="product-slider">
+                  <img src="images/mayonaises/1.jpg" alt="Mayonnaises" data-i18n-alt="altMayonnaise" loading="lazy">
+                </div>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pMayonnaise">Mayonnaises</h3>
+                <p data-i18n="pMayonnaiseDesc">Mayonnaises et sauces pour accompagner vos plats.</p>
+              </div>
+            </article>
           </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="5">
-            <div class="product-slider">
-              <img src="images/aliments/1.jpg" alt="Aliments" loading="lazy">
-              <img src="images/aliments/2.jpg" alt="Aliments" loading="lazy">
-              <img src="images/aliments/3.jpg" alt="Aliments" loading="lazy">
-              <img src="images/aliments/4.jpg" alt="Aliments" loading="lazy">
-              <img src="images/aliments/5.jpg" alt="Aliments" loading="lazy">
-            </div>
-            <button class="slide-btn slide-prev" aria-label="Image précédente">‹</button>
-            <button class="slide-btn slide-next" aria-label="Image suivante">›</button>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Aliments</h3>
-            <p>Garri, sucre et produits de première nécessité.</p>
+        </div>
+
+        <div class="category-group" data-group="emballage">
+          <div class="category-group-head">
+            <h3 data-i18n="groupPackaging">Emballage &amp; Jetables</h3>
+            <p data-i18n="groupPackagingDesc">Pratiques pour vos événements et votre quotidien.</p>
           </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="4">
-            <div class="product-slider">
-              <img src="images/chaussures/1.jpg" alt="Chaussures" loading="lazy">
-              <img src="images/chaussures/2.jpg" alt="Chaussures" loading="lazy">
-              <img src="images/chaussures/3.jpg" alt="Chaussures" loading="lazy">
-              <img src="images/chaussures/4.jpg" alt="Chaussures" loading="lazy">
-            </div>
-            <button class="slide-btn slide-prev" aria-label="Image précédente">‹</button>
-            <button class="slide-btn slide-next" aria-label="Image suivante">›</button>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Chaussures</h3>
-            <p>Hommes, femmes, enfants — style et confort au quotidien.</p>
+          <div class="products-grid">
+            <article class="product-card">
+              <figure class="product-image" data-count="3">
+                <div class="product-slider">
+                  <img src="images/sachets/1.jpg" alt="Boissons en Sachet" data-i18n-alt="altSachet" loading="lazy">
+                  <img src="images/sachets/2.jpg" alt="Boissons en Sachet" data-i18n-alt="altSachet" loading="lazy">
+                  <img src="images/sachets/3.jpg" alt="Boissons en Sachet" data-i18n-alt="altSachet" loading="lazy">
+                </div>
+                <div class="product-badge" data-i18n="badgePopular">Populaire</div>
+                <button class="slide-btn slide-prev" aria-label="Image précédente" data-i18n-aria="prevImage">‹</button>
+                <button class="slide-btn slide-next" aria-label="Image suivante" data-i18n-aria="nextImage">›</button>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pSachets">Sachets</h3>
+                <p data-i18n="pSachetsDesc">Sachets pratiques et solides pour l'emballage et la conservation.</p>
+              </div>
+            </article>
+            <article class="product-card">
+              <figure class="product-image" data-count="3">
+                <div class="product-slider">
+                  <img src="images/jetables/1.jpg" alt="Jetables" data-i18n-alt="altDisposables" loading="lazy">
+                  <img src="images/jetables/2.jpg" alt="Jetables" data-i18n-alt="altDisposables" loading="lazy">
+                  <img src="images/jetables/3.jpg" alt="Jetables" data-i18n-alt="altDisposables" loading="lazy">
+                </div>
+                <button class="slide-btn slide-prev" aria-label="Image précédente" data-i18n-aria="prevImage">‹</button>
+                <button class="slide-btn slide-next" aria-label="Image suivante" data-i18n-aria="nextImage">›</button>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pCups">Gobelets &amp; Jetables</h3>
+                <p data-i18n="pCupsDesc">Gobelets, cuillères et couverts jetables pour vos événements.</p>
+              </div>
+            </article>
           </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="3">
-            <div class="product-slider">
-              <img src="images/bureautiques/1.jpg" alt="Papeterie et Bureau" loading="lazy">
-              <img src="images/bureautiques/2.jpg" alt="Papeterie et Bureau" loading="lazy">
-              <img src="images/bureautiques/3.jpg" alt="Papeterie et Bureau" loading="lazy">
-            </div>
-            <button class="slide-btn slide-prev" aria-label="Image précédente">‹</button>
-            <button class="slide-btn slide-next" aria-label="Image suivante">›</button>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Papeterie &amp; Bureau</h3>
-            <p>Calques, chemises dossiers, photocopies et fournitures.</p>
+        </div>
+
+        <div class="category-group" data-group="mode">
+          <div class="category-group-head">
+            <h3 data-i18n="groupFashion">Mode</h3>
+            <p data-i18n="groupFashionDesc">Style et confort pour toute la famille.</p>
           </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="3">
-            <div class="product-slider">
-              <img src="images/jetables/1.jpg" alt="Jetables" loading="lazy">
-              <img src="images/jetables/2.jpg" alt="Jetables" loading="lazy">
-              <img src="images/jetables/3.jpg" alt="Jetables" loading="lazy">
-            </div>
-            <button class="slide-btn slide-prev" aria-label="Image précédente">‹</button>
-            <button class="slide-btn slide-next" aria-label="Image suivante">›</button>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Gobelets &amp; Jetables</h3>
-            <p>Gobelets, cuillères et couverts jetables pour vos événements.</p>
+          <div class="products-grid">
+            <article class="product-card">
+              <figure class="product-image" data-count="4">
+                <div class="product-slider">
+                  <img src="images/chaussures/1.jpg" alt="Chaussures" data-i18n-alt="altShoes" loading="lazy">
+                  <img src="images/chaussures/2.jpg" alt="Chaussures" data-i18n-alt="altShoes" loading="lazy">
+                  <img src="images/chaussures/3.jpg" alt="Chaussures" data-i18n-alt="altShoes" loading="lazy">
+                  <img src="images/chaussures/4.jpg" alt="Chaussures" data-i18n-alt="altShoes" loading="lazy">
+                </div>
+                <button class="slide-btn slide-prev" aria-label="Image précédente" data-i18n-aria="prevImage">‹</button>
+                <button class="slide-btn slide-next" aria-label="Image suivante" data-i18n-aria="nextImage">›</button>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pShoes">Chaussures</h3>
+                <p data-i18n="pShoesDesc">Hommes, femmes, enfants — style et confort au quotidien.</p>
+              </div>
+            </article>
           </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="1">
-            <div class="product-slider">
-              <img src="images/cirages_alumettes/1.jpg" alt="Cirage et Alumettes" loading="lazy">
-            </div>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Cirage &amp; Alumettes</h3>
-            <p>Cirage pour chaussures et alumettes pour la maison.</p>
+        </div>
+
+        <div class="category-group" data-group="maison">
+          <div class="category-group-head">
+            <h3 data-i18n="groupHome">Maison &amp; Hygiène</h3>
+            <p data-i18n="groupHomeDesc">Entretien, hygiène et bien-être à la maison.</p>
           </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="2">
-            <div class="product-slider">
-              <img src="images/dentifrices/1.jpg" alt="Dentifrices" loading="lazy">
-              <img src="images/dentifrices/2.jpg" alt="Dentifrices" loading="lazy">
-            </div>
-            <button class="slide-btn slide-prev" aria-label="Image précédente">‹</button>
-            <button class="slide-btn slide-next" aria-label="Image suivante">›</button>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Dentifrices</h3>
-            <p>Pâtes dentifrices pour toute la famille, au meilleur prix.</p>
+          <div class="products-grid">
+            <article class="product-card">
+              <figure class="product-image" data-count="1">
+                <div class="product-slider">
+                  <img src="images/cirages_alumettes/1.jpg" alt="Cirage et Alumettes" data-i18n-alt="altPolish" loading="lazy">
+                </div>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pPolish">Cirage &amp; Alumettes</h3>
+                <p data-i18n="pPolishDesc">Cirage pour chaussures et alumettes pour la maison.</p>
+              </div>
+            </article>
+            <article class="product-card">
+              <figure class="product-image" data-count="2">
+                <div class="product-slider">
+                  <img src="images/dentifrices/1.jpg" alt="Dentifrices" data-i18n-alt="altToothpaste" loading="lazy">
+                  <img src="images/dentifrices/2.jpg" alt="Dentifrices" data-i18n-alt="altToothpaste" loading="lazy">
+                </div>
+                <button class="slide-btn slide-prev" aria-label="Image précédente" data-i18n-aria="prevImage">‹</button>
+                <button class="slide-btn slide-next" aria-label="Image suivante" data-i18n-aria="nextImage">›</button>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pToothpaste">Dentifrices</h3>
+                <p data-i18n="pToothpasteDesc">Pâtes dentifrices pour toute la famille, au meilleur prix.</p>
+              </div>
+            </article>
+            <article class="product-card">
+              <figure class="product-image" data-count="3">
+                <div class="product-slider">
+                  <img src="images/electromenagers/1.jpg" alt="Petit Électroménager" data-i18n-alt="altAppliances" loading="lazy">
+                  <img src="images/electromenagers/2.jpg" alt="Petit Électroménager" data-i18n-alt="altAppliances" loading="lazy">
+                  <img src="images/electromenagers/3.jpg" alt="Petit Électroménager" data-i18n-alt="altAppliances" loading="lazy">
+                </div>
+                <button class="slide-btn slide-prev" aria-label="Image précédente" data-i18n-aria="prevImage">‹</button>
+                <button class="slide-btn slide-next" aria-label="Image suivante" data-i18n-aria="nextImage">›</button>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pAppliances">Électroménager</h3>
+                <p data-i18n="pAppliancesDesc">Appareils pratiques pour faciliter votre quotidien.</p>
+              </div>
+            </article>
+            <article class="product-card">
+              <figure class="product-image" data-count="3">
+                <div class="product-slider">
+                  <img src="images/moustiques/1.jpg" alt="Anti-Moustiques" data-i18n-alt="altMosquito" loading="lazy">
+                  <img src="images/moustiques/2.jpg" alt="Anti-Moustiques" data-i18n-alt="altMosquito" loading="lazy">
+                  <img src="images/moustiques/3.jpg" alt="Anti-Moustiques" data-i18n-alt="altMosquito" loading="lazy">
+                </div>
+                <button class="slide-btn slide-prev" aria-label="Image précédente" data-i18n-aria="prevImage">‹</button>
+                <button class="slide-btn slide-next" aria-label="Image suivante" data-i18n-aria="nextImage">›</button>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pMosquito">Anti-Moustiques</h3>
+                <p data-i18n="pMosquitoDesc">Produits anti-moustiques pour vous protéger toute l'année.</p>
+              </div>
+            </article>
           </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="3">
-            <div class="product-slider">
-              <img src="images/electromenagers/1.jpg" alt="Petit Électroménager" loading="lazy">
-              <img src="images/electromenagers/2.jpg" alt="Petit Électroménager" loading="lazy">
-              <img src="images/electromenagers/3.jpg" alt="Petit Électroménager" loading="lazy">
-            </div>
-            <button class="slide-btn slide-prev" aria-label="Image précédente">‹</button>
-            <button class="slide-btn slide-next" aria-label="Image suivante">›</button>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Électroménager</h3>
-            <p>Appareils pratiques pour faciliter votre quotidien.</p>
+        </div>
+
+        <div class="category-group" data-group="papeterie">
+          <div class="category-group-head">
+            <h3 data-i18n="groupStationery">Impression &amp; Papeterie</h3>
+            <p data-i18n="groupStationeryDesc">Tirage de plans, photocopies, fournitures et recharge internet.</p>
           </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="1">
-            <div class="product-slider">
-              <img src="images/mayonaises/1.jpg" alt="Mayonnaises" loading="lazy">
-            </div>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Mayonnaises</h3>
-            <p>Mayonnaises et sauces pour accompagner vos plats.</p>
+          <div class="products-grid">
+            <article class="product-card">
+              <figure class="product-image" data-count="3">
+                <div class="product-slider">
+                  <img src="images/bureautiques/1.jpg" alt="Tirage de plan et papeterie" data-i18n-alt="altStationery" loading="lazy">
+                  <img src="images/bureautiques/2.jpg" alt="Tirage de plan et papeterie" data-i18n-alt="altStationery" loading="lazy">
+                  <img src="images/bureautiques/3.jpg" alt="Tirage de plan et papeterie" data-i18n-alt="altStationery" loading="lazy">
+                </div>
+                <button class="slide-btn slide-prev" aria-label="Image précédente" data-i18n-aria="prevImage">‹</button>
+                <button class="slide-btn slide-next" aria-label="Image suivante" data-i18n-aria="nextImage">›</button>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pStationery">Tirage de Plan &amp; Papeterie</h3>
+                <p data-i18n="pStationeryDesc">Impression, photocopies, calques, chemises et fournitures de bureau.</p>
+              </div>
+            </article>
+            <article class="product-card">
+              <figure class="product-image" data-count="1">
+                <div class="product-slider">
+                  <img src="images/wifi/1.jpg" alt="Recharge WiFi" data-i18n-alt="altWifi" loading="lazy">
+                </div>
+              </figure>
+              <div class="product-body">
+                <h3 data-i18n="pWifi">Recharge WiFi</h3>
+                <p data-i18n="pWifiDesc">Recharges internet et forfaits pour rester connecté.</p>
+              </div>
+            </article>
           </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="3">
-            <div class="product-slider">
-              <img src="images/moustiques/1.jpg" alt="Anti-Moustiques" loading="lazy">
-              <img src="images/moustiques/2.jpg" alt="Anti-Moustiques" loading="lazy">
-              <img src="images/moustiques/3.jpg" alt="Anti-Moustiques" loading="lazy">
-            </div>
-            <button class="slide-btn slide-prev" aria-label="Image précédente">‹</button>
-            <button class="slide-btn slide-next" aria-label="Image suivante">›</button>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Anti-Moustiques</h3>
-            <p>Produits anti-moustiques pour vous protéger toute l'année.</p>
-          </div>
-        </article>
-        <article class="product-card">
-          <figure class="product-image" data-count="1">
-            <div class="product-slider">
-              <img src="images/wifi/1.jpg" alt="Recharge WiFi" loading="lazy">
-            </div>
-            
-          </figure>
-          <div class="product-body">
-            <h3>Recharge WiFi</h3>
-            <p>Recharges internet et forfaits pour rester connecté.</p>
-          </div>
-        </article>
+        </div>
+
       </div>
     </div>
   </section>
@@ -345,19 +394,19 @@
       <div class="stats-grid">
         <div class="stat">
           <span class="stat-number" data-count="200">0</span>
-          <span class="stat-label">Clients servis</span>
+          <span class="stat-label" data-i18n="statClients">Clients servis</span>
         </div>
         <div class="stat">
           <span class="stat-number" data-count="30">0</span>
-          <span class="stat-label">Produits disponibles</span>
+          <span class="stat-label" data-i18n="statProducts">Produits disponibles</span>
         </div>
         <div class="stat">
           <span class="stat-number" data-count="1">0</span>
-          <span class="stat-label">Années d'expérience</span>
+          <span class="stat-label" data-i18n="statYears">Années d'expérience</span>
         </div>
         <div class="stat">
           <span class="stat-number" data-count="99" data-suffix=",99 %">0</span>
-          <span class="stat-label">Taux de satisfaction</span>
+          <span class="stat-label" data-i18n="statSatisfaction">Taux de satisfaction</span>
         </div>
       </div>
     </div>
@@ -366,9 +415,9 @@
   <section id="contact" class="section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">· Contact ·</span>
-        <h2>On vous attend !</h2>
-        <p class="section-subtitle">Passez nous voir au marché Massalassi ou appelez-nous, on est là pour vous.</p>
+        <span class="section-tag" data-i18n="contactTag">· Contact ·</span>
+        <h2 data-i18n="contactTitle">On vous attend !</h2>
+        <p class="section-subtitle" data-i18n="contactSubtitle">Passez nous voir au marché Massalassi ou appelez-nous, on est là pour vous.</p>
       </div>
       <div class="contact-wrapper">
         <div class="contact-card-wide">
@@ -377,8 +426,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
             <div>
-              <h4>Adresse</h4>
-              <p>Marché Massalassi, Adidogomé<br>Bokovissimé, Lomé, Togo</p>
+              <h4 data-i18n="addressTitle">Adresse</h4>
+              <p data-i18n-html="addressText">Marché Massalassi, Adidogomé<br>Bokovissimé, Lomé, Togo</p>
             </div>
           </div>
         </div>
@@ -389,7 +438,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
               <div>
-                <h4>Téléphone</h4>
+                <h4 data-i18n="phoneTitle">Téléphone</h4>
                 <p class="contact-link-text contact-link-phone">00228 92177598</p>
               </div>
             </div>
@@ -400,8 +449,8 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
               </div>
               <div>
-                <h4>WhatsApp</h4>
-                <p class="contact-link-text">Écrivez-nous →</p>
+                <h4 data-i18n="whatsappTitle">WhatsApp</h4>
+                <p class="contact-link-text" data-i18n="whatsappCta">Écrivez-nous →</p>
               </div>
             </div>
           </a>
@@ -412,15 +461,55 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div>
-              <h4>Horaires</h4>
-              <p>Lun — Sam : 7h – 21h30 <span class="contact-sep">·</span> Dim : 9h – 21h</p>
+              <h4 data-i18n="hoursTitle">Horaires</h4>
+              <p data-i18n-html="hoursText">Lun — Sam : 7h – 21h30 <span class="contact-sep">·</span> Dim : 9h – 21h</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="contact-map">
-        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=1.202%2C6.158%2C1.262%2C6.198&layer=mapnik&marker=6.178%2C1.232" width="100%" height="300" style="border:0;border-radius:16px;" allowfullscreen loading="lazy"></iframe>
-        <p class="contact-map-caption">Marché Massalassi, Adidogomé — Lomé, Togo</p>
+
+      <!-- Formulaire de contact -->
+      <div class="contact-form-card">
+        <div class="contact-form-head">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+          </div>
+          <div>
+            <h3 data-i18n="formTitle">Envoyez-nous un message</h3>
+            <p data-i18n="formSubtitle">Une question ou une commande ? Écrivez-nous, on vous répond vite.</p>
+          </div>
+        </div>
+        <form id="contactForm" class="contact-form">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-name" data-i18n="formName">Nom complet</label>
+              <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Votre nom complet" data-i18n-placeholder="formNamePlaceholder">
+            </div>
+            <div class="form-field">
+              <label for="cf-contact" data-i18n="formContact">Email ou téléphone</label>
+              <input id="cf-contact" name="contact" type="text" required autocomplete="email" placeholder="Email ou numéro de téléphone" data-i18n-placeholder="formContactPlaceholder">
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="cf-subject" data-i18n="formSubject">Sujet</label>
+            <select id="cf-subject" name="subject">
+              <option value="general" data-i18n="subjectGeneral">Question générale</option>
+              <option value="commande" data-i18n="subjectOrder">Commande / Disponibilité</option>
+              <option value="renseignement" data-i18n="subjectInfo">Renseignement</option>
+              <option value="autre" data-i18n="subjectOther">Autre</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="cf-message" data-i18n="formMessage">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required placeholder="Écrivez votre message ici…" data-i18n-placeholder="formMessagePlaceholder"></textarea>
+          </div>
+          <button class="btn-submit" type="submit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            <span data-i18n="formSubmit">Envoyer via WhatsApp</span>
+          </button>
+          <p class="form-note" data-i18n="formNote">Le message s'ouvrira dans WhatsApp et sera envoyé à PamPam après votre validation.</p>
+          <p class="form-success" id="formSuccess" hidden data-i18n="formSuccess">Message prêt ! Validez l'envoi dans WhatsApp pour le transmettre à PamPam.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -440,12 +529,12 @@
             </svg>
             <div>
               <span class="footer-brand-name">PamPam</span>
-              <span class="footer-brand-tag">Boutique</span>
+              <span class="footer-brand-tag" data-i18n="footerShopTag">Boutique</span>
             </div>
           </div>
-          <p>Votre boutique de confiance au cœur du marché Massalassi à Lomé, Togo.</p>
+          <p data-i18n="footerTagline">Votre boutique de confiance au cœur du marché Massalassi à Lomé, Togo.</p>
           <div class="footer-social">
-            <a href="tel:0022890321245" class="social-link" aria-label="Téléphone">
+            <a href="tel:0022890321245" class="social-link" aria-label="Téléphone" data-i18n-aria="phoneTitle">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </a>
             <a href="https://wa.me/22890321245" target="_blank" class="social-link" aria-label="WhatsApp">
@@ -454,38 +543,379 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4>Navigation</h4>
+          <h4 data-i18n="footerNav">Navigation</h4>
           <ul>
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#produits">Produits</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#accueil" data-i18n="navHome">Accueil</a></li>
+            <li><a href="#produits" data-i18n="navProducts">Produits</a></li>
+            <li><a href="#contact" data-i18n="navContact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Horaires</h4>
+          <h4 data-i18n="footerHours">Horaires</h4>
           <ul>
-            <li>Lun — Sam : 7h – 21h30</li>
-            <li>Dim : 9h – 21h</li>
+            <li data-i18n="footerHoursSat">Lun — Sam : 7h – 21h30</li>
+            <li data-i18n="footerHoursSun">Dim : 9h – 21h</li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Contact</h4>
+          <h4 data-i18n="footerContact">Contact</h4>
           <ul>
             <li><a href="tel:0022890321245">00228 90321245</a></li>
             <li><a href="https://wa.me/22890321245" target="_blank">WhatsApp</a></li>
-            <li>Marché Massalassi, Lomé</li>
+            <li data-i18n="footerAddress">Marché Massalassi, Lomé</li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 PamPam — Boutique. Tous droits réservés.</p>
+        <p data-i18n="footerCopyright">© 2026 PamPam — Boutique. Tous droits réservés.</p>
       </div>
     </div>
   </footer>
 
   <script data-goatcounter="https://pampam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <script>
+    /* ─── Dictionnaire de traductions FR / EN ─── */
+    const I18N = {
+      fr: {
+        metaTitle: "PamPam — Boutique",
+        languageLabel: "Langue",
+        themeToggle: "Basculer le thème",
+        menu: "Menu",
+        navHome: "Accueil",
+        navProducts: "Produits",
+        navContact: "Contact",
+        heroBadge: "Boutique — Marché Massalassi",
+        heroWelcome: "Bienvenue chez",
+        heroTagline: "Tirage de plan · Jus frais · Chaussures · Garri · Pure water · Calques · Chemises · Gobelets & bien plus",
+        productsTag: "· Produits ·",
+        productsTitle: "Découvrez nos produits<br>par catégorie",
+        productsSubtitle: "Du quotidien aux occasions spéciales, retrouvez tout ce qu'il vous faut chez PamPam.",
+        catSectionLabel: "Nos catégories",
+        catAll: "Tout voir",
+        catDrinks: "Boissons",
+        catFood: "Alimentation",
+        catPackaging: "Emballage & Jetables",
+        catFashion: "Mode",
+        catHome: "Maison & Hygiène",
+        catStationery: "Impression & Papeterie",
+        catProduct: "produit",
+        catProducts: "produits",
+        groupDrinks: "Boissons",
+        groupDrinksDesc: "Eaux, jus frais, vins et boissons pour tous les goûts.",
+        groupFood: "Alimentation",
+        groupFoodDesc: "L'essentiel pour votre cuisine et vos repas.",
+        groupPackaging: "Emballage & Jetables",
+        groupPackagingDesc: "Pratiques pour vos événements et votre quotidien.",
+        groupFashion: "Mode",
+        groupFashionDesc: "Style et confort pour toute la famille.",
+        groupHome: "Maison & Hygiène",
+        groupHomeDesc: "Entretien, hygiène et bien-être à la maison.",
+        groupStationery: "Impression & Papeterie",
+        groupStationeryDesc: "Tirage de plans, photocopies, fournitures et recharge internet.",
+        badgeNew: "Nouveau",
+        badgePopular: "Populaire",
+        prevImage: "Image précédente",
+        nextImage: "Image suivante",
+        altPureWater: "Pure Water",
+        altSachet: "Boissons en Sachet",
+        altWines: "Vins",
+        altEnergy: "Boissons Énergisantes",
+        altFood: "Aliments",
+        altShoes: "Chaussures",
+        altStationery: "Tirage de plan et papeterie",
+        altDisposables: "Jetables",
+        altPolish: "Cirage et Alumettes",
+        altToothpaste: "Dentifrices",
+        altAppliances: "Petit Électroménager",
+        altMayonnaise: "Mayonnaises",
+        altMosquito: "Anti-Moustiques",
+        altWifi: "Recharge WiFi",
+        pPureWater: "Pure Water",
+        pPureWaterDesc: "Eau pure, fraîche et abordable.",
+        pSachets: "Sachets",
+        pSachetsDesc: "Sachets pratiques et solides pour l'emballage et la conservation.",
+        pWines: "Vins",
+        pWinesDesc: "Rouges, blancs et rosés pour toutes les célébrations.",
+        pEnergy: "Boissons Énergisantes",
+        pEnergyDesc: "Pour vous revitaliser et rester actif toute la journée.",
+        pFood: "Aliments",
+        pFoodDesc: "Garri, sucre et produits de première nécessité.",
+        pShoes: "Chaussures",
+        pShoesDesc: "Hommes, femmes, enfants — style et confort au quotidien.",
+        pStationery: "Tirage de Plan & Papeterie",
+        pStationeryDesc: "Impression, photocopies, calques, chemises et fournitures de bureau.",
+        pCups: "Gobelets & Jetables",
+        pCupsDesc: "Gobelets, cuillères et couverts jetables pour vos événements.",
+        pPolish: "Cirage & Alumettes",
+        pPolishDesc: "Cirage pour chaussures et alumettes pour la maison.",
+        pToothpaste: "Dentifrices",
+        pToothpasteDesc: "Pâtes dentifrices pour toute la famille, au meilleur prix.",
+        pAppliances: "Électroménager",
+        pAppliancesDesc: "Appareils pratiques pour faciliter votre quotidien.",
+        pMayonnaise: "Mayonnaises",
+        pMayonnaiseDesc: "Mayonnaises et sauces pour accompagner vos plats.",
+        pMosquito: "Anti-Moustiques",
+        pMosquitoDesc: "Produits anti-moustiques pour vous protéger toute l'année.",
+        pWifi: "Recharge WiFi",
+        pWifiDesc: "Recharges internet et forfaits pour rester connecté.",
+        statClients: "Clients servis",
+        statProducts: "Produits disponibles",
+        statYears: "Années d'expérience",
+        statSatisfaction: "Taux de satisfaction",
+        contactTag: "· Contact ·",
+        contactTitle: "On vous attend !",
+        contactSubtitle: "Passez nous voir au marché Massalassi ou appelez-nous, on est là pour vous.",
+        addressTitle: "Adresse",
+        addressText: "Marché Massalassi, Adidogomé<br>Bokovissimé, Lomé, Togo",
+        phoneTitle: "Téléphone",
+        whatsappTitle: "WhatsApp",
+        whatsappCta: "Écrivez-nous →",
+        hoursTitle: "Horaires",
+        hoursText: "Lun — Sam : 7h – 21h30 <span class=\"contact-sep\">·</span> Dim : 9h – 21h",
+        formTitle: "Envoyez-nous un message",
+        formSubtitle: "Une question ou une commande ? Écrivez-nous, on vous répond vite.",
+        formName: "Nom complet",
+        formNamePlaceholder: "Votre nom complet",
+        formContact: "Email ou téléphone",
+        formContactPlaceholder: "Email ou numéro de téléphone",
+        formSubject: "Sujet",
+        subjectGeneral: "Question générale",
+        subjectOrder: "Commande / Disponibilité",
+        subjectInfo: "Renseignement",
+        subjectOther: "Autre",
+        formMessage: "Message",
+        formMessagePlaceholder: "Écrivez votre message ici…",
+        formSubmit: "Envoyer via WhatsApp",
+        formNote: "Le message s'ouvrira dans WhatsApp et sera envoyé à PamPam après votre validation.",
+        formSuccess: "Message prêt ! Validez l'envoi dans WhatsApp pour le transmettre à PamPam.",
+        footerShopTag: "Boutique",
+        footerTagline: "Votre boutique de confiance au cœur du marché Massalassi à Lomé, Togo.",
+        footerNav: "Navigation",
+        footerHours: "Horaires",
+        footerHoursSat: "Lun — Sam : 7h – 21h30",
+        footerHoursSun: "Dim : 9h – 21h",
+        footerContact: "Contact",
+        footerAddress: "Marché Massalassi, Lomé",
+        footerCopyright: "© 2026 PamPam — Boutique. Tous droits réservés."
+      },
+      en: {
+        metaTitle: "PamPam — Shop",
+        languageLabel: "Language",
+        themeToggle: "Toggle theme",
+        menu: "Menu",
+        navHome: "Home",
+        navProducts: "Products",
+        navContact: "Contact",
+        heroBadge: "Shop — Massalassi Market",
+        heroWelcome: "Welcome to",
+        heroTagline: "Printing · Fresh juice · Shoes · Garri · Pure water · Tracing paper · Folders · Cups & more",
+        productsTag: "· Products ·",
+        productsTitle: "Explore our products<br>by category",
+        productsSubtitle: "From everyday needs to special occasions, find everything you need at PamPam.",
+        catSectionLabel: "Our categories",
+        catAll: "View all",
+        catDrinks: "Drinks",
+        catFood: "Food",
+        catPackaging: "Packaging & Disposables",
+        catFashion: "Fashion",
+        catHome: "Home & Hygiene",
+        catStationery: "Printing & Stationery",
+        catProduct: "product",
+        catProducts: "products",
+        groupDrinks: "Drinks",
+        groupDrinksDesc: "Water, fresh juice, wines and drinks for every taste.",
+        groupFood: "Food",
+        groupFoodDesc: "Essentials for your kitchen and meals.",
+        groupPackaging: "Packaging & Disposables",
+        groupPackagingDesc: "Handy for your events and everyday life.",
+        groupFashion: "Fashion",
+        groupFashionDesc: "Style and comfort for the whole family.",
+        groupHome: "Home & Hygiene",
+        groupHomeDesc: "Care, hygiene and well-being at home.",
+        groupStationery: "Printing & Stationery",
+        groupStationeryDesc: "Plan printing, photocopies, supplies and internet top-ups.",
+        badgeNew: "New",
+        badgePopular: "Popular",
+        prevImage: "Previous image",
+        nextImage: "Next image",
+        altPureWater: "Pure Water",
+        altSachet: "Sachet Drinks",
+        altWines: "Wines",
+        altEnergy: "Energy Drinks",
+        altFood: "Food",
+        altShoes: "Shoes",
+        altStationery: "Plan printing and stationery",
+        altDisposables: "Disposables",
+        altPolish: "Shoe Polish and Matches",
+        altToothpaste: "Toothpaste",
+        altAppliances: "Small Appliances",
+        altMayonnaise: "Mayonnaise",
+        altMosquito: "Mosquito Repellent",
+        altWifi: "WiFi Recharge",
+        pPureWater: "Pure Water",
+        pPureWaterDesc: "Pure, fresh and affordable water.",
+        pSachets: "Sachets",
+        pSachetsDesc: "Practical and sturdy pouches for packaging and storage.",
+        pWines: "Wines",
+        pWinesDesc: "Reds, whites and rosés for all celebrations.",
+        pEnergy: "Energy Drinks",
+        pEnergyDesc: "To revitalize you and stay active all day long.",
+        pFood: "Food",
+        pFoodDesc: "Garri, sugar and everyday essentials.",
+        pShoes: "Shoes",
+        pShoesDesc: "Men, women, children — everyday style and comfort.",
+        pStationery: "Plan Printing & Stationery",
+        pStationeryDesc: "Printing, photocopies, tracing paper, folders and office supplies.",
+        pCups: "Cups & Disposables",
+        pCupsDesc: "Cups, spoons and disposable cutlery for your events.",
+        pPolish: "Polish & Matches",
+        pPolishDesc: "Shoe polish and matches for the home.",
+        pToothpaste: "Toothpaste",
+        pToothpasteDesc: "Toothpaste for the whole family, at the best price.",
+        pAppliances: "Appliances",
+        pAppliancesDesc: "Handy appliances to make your daily life easier.",
+        pMayonnaise: "Mayonnaise",
+        pMayonnaiseDesc: "Mayonnaise and sauces to accompany your dishes.",
+        pMosquito: "Mosquito Repellent",
+        pMosquitoDesc: "Mosquito repellent products to protect you year-round.",
+        pWifi: "WiFi Recharge",
+        pWifiDesc: "Internet top-ups and plans to stay connected.",
+        statClients: "Customers served",
+        statProducts: "Products available",
+        statYears: "Years of experience",
+        statSatisfaction: "Satisfaction rate",
+        contactTag: "· Contact ·",
+        contactTitle: "We're waiting for you!",
+        contactSubtitle: "Come see us at the Massalassi market or give us a call, we're here for you.",
+        addressTitle: "Address",
+        addressText: "Massalassi Market, Adidogomé<br>Bokovissimé, Lomé, Togo",
+        phoneTitle: "Phone",
+        whatsappTitle: "WhatsApp",
+        whatsappCta: "Message us →",
+        hoursTitle: "Hours",
+        hoursText: "Mon — Sat: 7am – 9:30pm <span class=\"contact-sep\">·</span> Sun: 9am – 9pm",
+        formTitle: "Send us a message",
+        formSubtitle: "A question or an order? Write to us, we'll reply quickly.",
+        formName: "Full name",
+        formNamePlaceholder: "Your full name",
+        formContact: "Email or phone",
+        formContactPlaceholder: "Email or phone number",
+        formSubject: "Subject",
+        subjectGeneral: "General question",
+        subjectOrder: "Order / Availability",
+        subjectInfo: "Information",
+        subjectOther: "Other",
+        formMessage: "Message",
+        formMessagePlaceholder: "Write your message here…",
+        formSubmit: "Send via WhatsApp",
+        formNote: "The message will open in WhatsApp and be sent to PamPam after your confirmation.",
+        formSuccess: "Message ready! Confirm sending in WhatsApp to deliver it to PamPam.",
+        footerShopTag: "Shop",
+        footerTagline: "Your trusted shop in the heart of the Massalassi market in Lomé, Togo.",
+        footerNav: "Navigation",
+        footerHours: "Hours",
+        footerHoursSat: "Mon — Sat: 7am – 9:30pm",
+        footerHoursSun: "Sun: 9am – 9pm",
+        footerContact: "Contact",
+        footerAddress: "Massalassi Market, Lomé",
+        footerCopyright: "© 2026 PamPam — Shop. All rights reserved."
+      }
+    };
+
+    /* ─── Application de la langue ─── */
+    function setLanguage(lang) {
+      if (!I18N[lang]) lang = 'fr';
+      const t = I18N[lang];
+      const root = document.documentElement;
+
+      root.lang = lang;
+      document.title = t.metaTitle;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const value = t[el.dataset.i18n];
+        if (value !== undefined) el.textContent = value;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const value = t[el.dataset.i18nHtml];
+        if (value !== undefined) el.innerHTML = value;
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const value = t[el.dataset.i18nAria];
+        if (value !== undefined) el.setAttribute('aria-label', value);
+      });
+      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const value = t[el.dataset.i18nAlt];
+        if (value !== undefined) el.setAttribute('alt', value);
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const value = t[el.dataset.i18nPlaceholder];
+        if (value !== undefined) el.setAttribute('placeholder', value);
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+        btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
+      });
+
+      localStorage.setItem('lang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+
+    let initialLang = localStorage.getItem('lang');
+    if (!initialLang) {
+      initialLang = (navigator.language || '').toLowerCase().startsWith('en') ? 'en' : 'fr';
+    }
+    setLanguage(initialLang);
+
+    /* ─── Filtre par catégorie ─── */
+    const categoryCards = document.querySelectorAll('.category-card');
+    const categoryGroups = document.querySelectorAll('.category-group');
+    categoryCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const filter = card.dataset.filter;
+        categoryCards.forEach(btn => {
+          const active = btn === card;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        categoryGroups.forEach(group => {
+          group.hidden = filter !== 'all' && group.dataset.group !== filter;
+        });
+      });
+    });
+
+    /* ─── Formulaire de contact (envoi via WhatsApp) ─── */
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const fields = contactForm.elements;
+        const name = fields['name'].value.trim();
+        const contact = fields['contact'].value.trim();
+        const subject = fields['subject'].options[fields['subject'].selectedIndex].text;
+        const message = fields['message'].value.trim();
+
+        if (!name || !contact || !message) return;
+
+        const text = 'Nouveau message PamPam\n\n'
+          + 'Nom : ' + name + '\n'
+          + 'Contact : ' + contact + '\n'
+          + 'Sujet : ' + subject + '\n\n'
+          + message;
+
+        window.open('https://wa.me/22890321245?text=' + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
+
+        const success = document.getElementById('formSuccess');
+        success.hidden = false;
+        contactForm.reset();
+        setTimeout(() => { success.hidden = true; }, 8000);
+      });
+    }
+
+    /* ─── Thème ─── */
     const html = document.documentElement;
     const toggle = document.querySelector('.theme-toggle');
     const saved = localStorage.getItem('theme') || 'light';
@@ -499,21 +929,23 @@
       localStorage.setItem('theme', next);
     });
 
+    /* ─── Animations ─── */
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.service-card, .product-card, .contact-card-wide, .stat, .section-header').forEach(el => {
+    document.querySelectorAll('.product-card, .contact-card-wide, .stat, .section-header').forEach(el => {
       el.classList.add('fade-in');
       observer.observe(el);
     });
 
-    document.querySelectorAll('.services-grid > *, .products-grid > *, .contact-row > *').forEach((el, i) => {
+    document.querySelectorAll('.products-grid > *, .contact-row > *').forEach((el, i) => {
       el.style.setProperty('--delay', `${i * 0.06}s`);
     });
 
+    /* ─── Menu mobile ─── */
     const toggleBtn = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.nav-links');
     toggleBtn.addEventListener('click', () => {
@@ -527,6 +959,7 @@
       });
     });
 
+    /* ─── Lien de navigation actif ─── */
     const navLinks = document.querySelectorAll('.nav-links a');
     const sections = document.querySelectorAll('section[id]');
     window.addEventListener('scroll', () => {
@@ -537,9 +970,9 @@
       navLinks.forEach(link => {
         link.classList.toggle('active', link.getAttribute('href') === '#' + current);
       });
-
     });
 
+    /* ─── Carrousels de photos ─── */
     document.querySelectorAll('.product-image').forEach(figure => {
       const slider = figure.querySelector('.product-slider');
       const prev = figure.querySelector('.slide-prev');
@@ -549,6 +982,7 @@
       if (next) next.addEventListener('click', () => slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' }));
     });
 
+    /* ─── Compteurs ─── */
     const statsSection = document.getElementById('chiffres');
     const statNumbers = document.querySelectorAll('.stat-number');
     let counted = false;

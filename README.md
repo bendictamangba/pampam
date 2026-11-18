@@ -7,10 +7,11 @@ Site vitrine d'une boutique de proximité située au Marché Massalassi à Lomé
 ## Fonctionnalités
 
 - Page d'accueil dynamique avec animations
-- Sections Services et Produits
-- Carte interactive (OpenStreetMap)
+- Produits classés par catégories avec tuiles et filtre (inspiré d'Assivito)
+- Formulaire de contact envoyant le message via WhatsApp
 - Lien WhatsApp direct
 - Mode sombre / clair
+- Bilingue français / anglais (sélecteur FR/EN, choix mémorisé)
 - Compteur de visites (GoatCounter)
 
 ## Stack
