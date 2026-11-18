@@ -13,7 +13,7 @@ function icon(paths) {
    Un nom d'onglet fixes fait que le navigateur recharge l'onglet existant
    au lieu d'en créer un nouveau à chaque commande. */
 function openWhatsApp(text) {
-  const url = 'https://wa.me/22890321245?text=' + encodeURIComponent(text);
+  const url = 'https://wa.me/22892177598?text=' + encodeURIComponent(text);
   const tab = window.open(url, 'pampam-whatsapp');
   if (tab) {
     tab.focus();
@@ -22,18 +22,249 @@ function openWhatsApp(text) {
   }
 }
 
+const heroContact = document.getElementById('heroContact');
+if (heroContact) {
+  heroContact.addEventListener('click', () => {
+    openWhatsApp(I18N[document.documentElement.lang].heroContactMessage);
+  });
+}
+
 function fileSlug(text) {
   return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'produit';
 }
 
+/* ─── Génération d'une fiche PDF (sans bibliothèque externe) ─── */
+
+const PDF_WINANSI = {
+  '€': 0x80, '‚': 0x82, 'ƒ': 0x83, '„': 0x84, '…': 0x85, '†': 0x86, '‡': 0x87,
+  'Š': 0x8A, '‹': 0x8B, 'Œ': 0x8C, 'Ž': 0x8E, '‘': 0x91, '’': 0x92, '“': 0x93,
+  '”': 0x94, '•': 0x95, '–': 0x96, '—': 0x97, '™': 0x99, 'š': 0x9A, '›': 0x9B,
+  'œ': 0x9C, 'ž': 0x9E, 'Ÿ': 0x9F
+};
+
+function pdfText(value) {
+  let out = '';
+  for (const char of String(value)) {
+    const code = PDF_WINANSI[char];
+    if (code !== undefined) out += String.fromCharCode(code);
+    else if (char.codePointAt(0) <= 255) out += char;
+    else out += '?';
+  }
+  return out.replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)');
+}
+
+function pdfBytes(text) {
+  const bytes = new Uint8Array(text.length);
+  for (let i = 0; i < text.length; i++) bytes[i] = text.charCodeAt(i) & 0xFF;
+  return bytes;
+}
+
+function pdfWrap(text, maxChars) {
+  const words = String(text).split(/\s+/);
+  const lines = [];
+  let line = '';
+  words.forEach(word => {
+    if ((line + ' ' + word).trim().length > maxChars) {
+      if (line) lines.push(line);
+      line = word;
+    } else {
+      line = (line ? line + ' ' : '') + word;
+    }
+  });
+  if (line) lines.push(line);
+  return lines;
+}
+
+/* Récupère les octets JPEG du fichier directement, sans ré-encodage.
+   C'est beaucoup plus rapide que de redessiner l'image dans un canvas. */
+let thumbsPromise = null;
+
+/* Charge les miniatures intégrées uniquement si le fetch échoue (cas file://). */
+function loadThumbnails() {
+  if (typeof PRODUCT_THUMBS !== 'undefined') return Promise.resolve(PRODUCT_THUMBS);
+  if (!thumbsPromise) {
+    thumbsPromise = new Promise(resolve => {
+      const script = document.createElement('script');
+      script.src = 'js/thumbnails.js';
+      script.onload = () => resolve(typeof PRODUCT_THUMBS !== 'undefined' ? PRODUCT_THUMBS : {});
+      script.onerror = () => resolve({});
+      document.head.appendChild(script);
+    });
+  }
+  return thumbsPromise;
+}
+
+async function fetchImageBytes(src, id) {
+  const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+  const timer = controller ? setTimeout(() => controller.abort(), 8000) : null;
+  try {
+    const response = await fetch(src, controller ? { signal: controller.signal } : undefined);
+    if (!response.ok) throw new Error('Fetch image failed');
+    return new Uint8Array(await response.arrayBuffer());
+  } catch (error) {
+    const thumbs = await loadThumbnails();
+    if (thumbs[id]) return base64ToBytes(thumbs[id].split(',')[1]);
+    /* Dernier recours : petite image grise générée localement. */
+    try {
+      const canvas = document.createElement('canvas');
+      canvas.width = 16;
+      canvas.height = 16;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#dddddd';
+      ctx.fillRect(0, 0, 16, 16);
+      return base64ToBytes(canvas.toDataURL('image/jpeg').split(',')[1]);
+    } catch (fallbackError) {
+      return new Uint8Array(0);
+    }
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}
+
+function base64ToBytes(base64) {
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+
+/* Construit un PDF valide : image intégrée + textes du produit. */
+function buildProductPDF(product, lang, image) {
+  const t = I18N[lang];
+  const name = product.name[lang] || product.name.fr;
+  const desc = product.desc[lang] || product.desc.fr;
+  const specs = product.specs[lang] || product.specs.fr || [];
+  const date = new Date().toLocaleDateString(lang === 'en' ? 'en-GB' : 'fr-FR');
+  const commands = [];
+
+  commands.push('0.02 0.588 0.416 rg 0 752 595 90 re f');
+  commands.push('BT /F2 11 Tf 1 1 1 rg 40 812 Td (' + pdfText('PamPam — ' + t.footerShopTag) + ') Tj ET');
+  commands.push('BT /F2 20 Tf 1 1 1 rg 40 778 Td (' + pdfText(name) + ') Tj ET');
+
+  const scale = Math.min(515 / image.width, 300 / image.height);
+  const w = image.width * scale;
+  const h = image.height * scale;
+  const x = (595 - w) / 2;
+  const y = 430 + (300 - h) / 2;
+  commands.push('q ' + w.toFixed(2) + ' 0 0 ' + h.toFixed(2) + ' ' + x.toFixed(2) + ' ' + y.toFixed(2) + ' cm /Im0 Do Q');
+
+  commands.push('0.02 0.588 0.416 rg 40 395 230 34 re f');
+  commands.push('BT /F2 13 Tf 1 1 1 rg 54 406 Td (' + pdfText(t.priceLabel + ' : ' + product.price) + ') Tj ET');
+
+  commands.push('0.12 0.11 0.10 rg');
+  let lineY = 365;
+  pdfWrap(desc, 85).slice(0, 3).forEach(line => {
+    commands.push('BT /F1 11 Tf 40 ' + lineY + ' Td (' + pdfText(line) + ') Tj ET');
+    lineY -= 17;
+  });
+
+  lineY -= 14;
+  commands.push('0.54 0.53 0.49 rg');
+  commands.push('BT /F2 9 Tf 40 ' + lineY + ' Td (' + pdfText(t.sheetSpecs.toUpperCase()) + ') Tj ET');
+  lineY -= 24;
+
+  specs.forEach(row => {
+    commands.push('0.90 0.89 0.85 RG 0.6 w 40 ' + (lineY - 7) + ' m 555 ' + (lineY - 7) + ' l S');
+    commands.push('0.54 0.53 0.49 rg');
+    commands.push('BT /F2 10 Tf 40 ' + lineY + ' Td (' + pdfText(row[0]) + ') Tj ET');
+    commands.push('0.12 0.11 0.10 rg');
+    commands.push('BT /F1 10 Tf 210 ' + lineY + ' Td (' + pdfText(row[1]) + ') Tj ET');
+    lineY -= 24;
+  });
+
+  commands.push('0.90 0.89 0.85 RG 0.6 w 40 112 m 555 112 l S');
+  commands.push('0.54 0.53 0.49 rg');
+  commands.push('BT /F1 9 Tf 40 94 Td (' + pdfText(t.sheetContact + ' : 00228 92177598 (WhatsApp)') + ') Tj ET');
+  commands.push('BT /F1 9 Tf 40 80 Td (' + pdfText('Marche Massalassi, Adidogome — Lome, Togo') + ') Tj ET');
+  commands.push('BT /F1 8 Tf 40 64 Td (' + pdfText(t.sheetGenerated + ' : ' + date) + ') Tj ET');
+
+  const stream = pdfBytes(commands.join('\n'));
+  const chunks = [];
+  let position = 0;
+  function push(part) {
+    const bytes = typeof part === 'string' ? pdfBytes(part) : part;
+    chunks.push(bytes);
+    position += bytes.length;
+  }
+  const offsets = [];
+  function object(number, body) {
+    offsets[number] = position;
+    push(number + ' 0 obj\n');
+    push(body);
+    push('\nendobj\n');
+  }
+
+  push('%PDF-1.4\n');
+  object(1, '<< /Type /Catalog /Pages 2 0 R >>');
+  object(2, '<< /Type /Pages /Kids [3 0 R] /Count 1 >>');
+  object(3, '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> /XObject << /Im0 6 0 R >> >> /Contents 7 0 R >>');
+  object(4, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');
+  object(5, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
+  offsets[6] = position;
+  push('6 0 obj\n<< /Type /XObject /Subtype /Image /Width ' + image.width +
+    ' /Height ' + image.height + ' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ' + image.bytes.length + ' >>\nstream\n');
+  push(image.bytes);
+  push('\nendstream\nendobj\n');
+  offsets[7] = position;
+  push('7 0 obj\n<< /Length ' + stream.length + ' >>\nstream\n');
+  push(stream);
+  push('\nendstream\nendobj\n');
+
+  const xref = position;
+  push('xref\n0 8\n0000000000 65535 f \n');
+  for (let i = 1; i <= 7; i++) {
+    push(String(offsets[i]).padStart(10, '0') + ' 00000 n \n');
+  }
+  push('trailer\n<< /Size 8 /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF');
+
+  return new Blob(chunks, { type: 'application/pdf' });
+}
+
+async function downloadProduct(id) {
+  const product = PRODUCTS.find(item => item.id === id);
+  if (!product) return;
+
+  const lang = document.documentElement.lang;
+  const button = document.querySelector('.btn-download[data-download="' + id + '"]');
+  const label = button && button.querySelector('[data-i18n="btnDownload"]');
+  if (button) button.disabled = true;
+
+  try {
+    const card = document.querySelector('.product-card[data-product="' + id + '"]');
+    const img = card && card.querySelector('.product-image img');
+    const image = {
+      bytes: await fetchImageBytes(product.image, product.id),
+      width: (img && img.naturalWidth) || 800,
+      height: (img && img.naturalHeight) || 600
+    };
+
+    const pdf = buildProductPDF(product, lang, image);
+    const url = URL.createObjectURL(pdf);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = fileSlug(product.name.fr) + '.pdf';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+    if (label) {
+      const previous = label.textContent;
+      label.textContent = I18N[lang].downloadDone;
+      setTimeout(() => { label.textContent = previous; }, 2500);
+    }
+  } catch (error) {
+    console.error('Téléchargement impossible :', error);
+  } finally {
+    if (button) button.disabled = false;
+  }
+}
+
 function productCardHTML(product) {
   const badge = product.badge
-    ? '<div class="product-badge" data-i18n="' + product.badge + '"></div>'
+    ? '<div class="product-badge' + (product.badge === 'badgePopular' ? ' product-badge--warm' : '') + '" data-i18n="' + product.badge + '"></div>'
     : '';
-  const extension = product.image.split('.').pop();
-  const fileName = fileSlug(product.name.fr) + '.' + extension;
-
   return '' +
     '<article class="product-card" data-product="' + product.id + '">' +
       '<figure class="product-image">' +
@@ -55,10 +286,10 @@ function productCardHTML(product) {
               '<span data-i18n="btnOrder"></span>' +
             '</button>' +
           '</div>' +
-          '<a class="btn-download" href="' + product.image + '" download="' + fileName + '" data-i18n-aria="downloadProduct" aria-label="Télécharger l image du produit">' +
+          '<button type="button" class="btn-download" data-download="' + product.id + '" data-i18n-aria="downloadProduct" aria-label="Télécharger la fiche du produit">' +
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>' +
             '<span data-i18n="btnDownload"></span>' +
-          '</a>' +
+          '</button>' +
         '</div>' +
       '</div>' +
     '</article>';
@@ -105,13 +336,21 @@ PRODUCTS.forEach(product => {
 
 const PAGE_SIZE = 24;
 const pagination = document.getElementById('pagination');
+const searchInput = document.getElementById('productSearch');
+const searchClear = document.getElementById('searchClear');
+const noResults = document.getElementById('noResults');
 let currentPage = 1;
 let activeFilter = 'all';
+let searchTerm = '';
 
 function filteredProducts() {
-  return activeFilter === 'all'
-    ? PRODUCTS
-    : PRODUCTS.filter(product => product.category === activeFilter);
+  return PRODUCTS.filter(product => {
+    const inCategory = activeFilter === 'all' || product.category === activeFilter;
+    if (!inCategory) return false;
+    if (!searchTerm) return true;
+    return [product.name.fr, product.name.en, product.desc.fr, product.desc.en, product.price]
+      .some(value => value.toLowerCase().includes(searchTerm));
+  });
 }
 
 function pageCount() {
@@ -150,6 +389,9 @@ function renderGrid() {
   document.querySelectorAll('.product-card').forEach(card => {
     card.hidden = !visible.has(card.dataset.product);
   });
+
+  noResults.hidden = items.length > 0;
+  searchClear.hidden = searchTerm === '';
   renderPagination();
 }
 
@@ -168,6 +410,24 @@ pagination.addEventListener('click', event => {
   window.scrollTo({ top: top, behavior: 'smooth' });
 });
 
+if (searchInput) {
+  searchInput.addEventListener('input', () => {
+    searchTerm = searchInput.value.trim().toLowerCase();
+    currentPage = 1;
+    renderGrid();
+  });
+}
+
+if (searchClear) {
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchTerm = '';
+    currentPage = 1;
+    renderGrid();
+    searchInput.focus();
+  });
+}
+
 /* ─── Langue ─── */
 
 let activeModalProduct = null;
@@ -179,6 +439,16 @@ function setLanguage(lang) {
 
   root.lang = lang;
   document.title = t.metaTitle;
+
+  const meta = id => document.getElementById(id);
+  const description = meta('metaDescription');
+  const ogTitle = meta('ogTitle');
+  const ogDescription = meta('ogDescription');
+  const ogLocale = meta('ogLocale');
+  if (description) description.content = t.metaDescription;
+  if (ogTitle) ogTitle.content = t.metaTitle;
+  if (ogDescription) ogDescription.content = t.ogDescription;
+  if (ogLocale) ogLocale.content = t.ogLocale;
 
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const value = t[el.dataset.i18n];
@@ -327,6 +597,12 @@ document.addEventListener('click', event => {
   const order = event.target.closest('[data-order]');
   if (order) {
     orderProduct(order.dataset.order);
+    return;
+  }
+
+  const download = event.target.closest('[data-download]');
+  if (download) {
+    downloadProduct(download.dataset.download);
   }
 });
 
@@ -420,7 +696,17 @@ window.addEventListener('scroll', () => {
   navLinks.forEach(link => {
     link.classList.toggle('active', link.getAttribute('href') === '#' + current);
   });
+
+  if (backToTop) backToTop.hidden = scrollY < 500;
 });
+
+/* ─── Retour en haut ─── */
+
+const backToTop = document.getElementById('backToTop');
+if (backToTop) {
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  backToTop.hidden = scrollY < 500;
+}
 
 /* ─── Compteurs ─── */
 

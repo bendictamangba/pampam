@@ -36,6 +36,10 @@ const CATEGORIES = [
     nameKey: "catHome"
   },
   {
+    id: "electromenager",
+    nameKey: "catAppliances"
+  },
+  {
     id: "papeterie",
     nameKey: "catStationery"
   }
@@ -49,6 +53,7 @@ const CATEGORY_ICONS = {
   emballage: "<path d=\"M21 8l-9-5-9 5 9 5 9-5z\"/><path d=\"M3 8v8l9 5 9-5V8\"/><path d=\"M12 13v8\"/>",
   mode: "<path d=\"M20 6l-4-2-4 2-4-2-4 2 2 4 2-1v11h8V9l2 1 2-4z\"/>",
   maison: "<path d=\"M3 10l9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10z\"/><path d=\"M9 21v-7h6v7\"/>",
+  electromenager: "<path d=\"M4 4h16v12H4z\"/><path d=\"M8 20h8\"/><path d=\"M12 16v4\"/><path d=\"M9 8h6\"/>",
   papeterie: "<path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/><path d=\"M14 2v6h6\"/><path d=\"M8 13h8M8 17h6\"/>"
 };
 
@@ -69,7 +74,7 @@ const PRODUCTS = [
       fr: "Pure Water",
       en: "Pure Water"
     },
-    badge: "badgeNew",
+    badge: null,
     price: "500 F",
     specs: {
       fr: [
@@ -167,7 +172,7 @@ const PRODUCTS = [
       fr: "Boissons Énergisantes",
       en: "Energy Drinks"
     },
-    badge: "badgeNew",
+    badge: null,
     price: "800 F",
     specs: {
       fr: [
@@ -544,20 +549,20 @@ const PRODUCTS = [
     }
   },
   {
-    id: "appliances",
-    category: "maison",
+    id: "termousse",
+    category: "electromenager",
     image: "images/electromenagers/1.jpg",
     name: {
-      fr: "Électroménager",
-      en: "Appliances"
+      fr: "Termousse",
+      en: "Thermos"
     },
     desc: {
-      fr: "Appareils pratiques pour faciliter votre quotidien.",
-      en: "Handy appliances to make your daily life easier."
+      fr: "Bouteille isotherme pour garder vos boissons chaudes ou fraîches toute la journée.",
+      en: "Insulated bottle to keep your drinks hot or cold all day long."
     },
     alt: {
-      fr: "Petit Électroménager",
-      en: "Small Appliances"
+      fr: "Termousse",
+      en: "Thermos flask"
     },
     badge: null,
     price: "15 000 F",
@@ -565,29 +570,29 @@ const PRODUCTS = [
       fr: [
         [
           "Type",
-          "Petit électroménager"
+          "Bouteille isotherme"
         ],
         [
           "Usage",
-          "Quotidien"
+          "Boissons chaudes ou froides"
         ],
         [
           "Atout",
-          "Pratique et durable"
+          "Conserve la température"
         ]
       ],
       en: [
         [
           "Type",
-          "Small appliances"
+          "Insulated bottle"
         ],
         [
           "Use",
-          "Everyday"
+          "Hot or cold drinks"
         ],
         [
           "Benefit",
-          "Handy and durable"
+          "Keeps the temperature"
         ]
       ]
     }

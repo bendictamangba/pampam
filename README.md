@@ -6,15 +6,19 @@ Site vitrine d'une boutique de proximité située au Marché Massalassi à Lomé
 
 ## Fonctionnalités
 
-- Page d'accueil dynamique avec animations
+- Hero avec mosaïque de photos et entrée animée en cascade
+- Boutons avec retour au clic, accent ambre, mouvement réduit pris en charge
 - Grille produits dense pleine largeur, avec tuiles de catégories servant de filtre (inspiré d'Assivito)
-- Pagination adaptative (24 produits par page), masquée tant qu'il n'y a qu'une page ; remise à la page 1 à chaque changement de filtre
-- Prix affichés sur les cartes, fiche détaillée (modale), bouton « Commander » via WhatsApp et bouton « Télécharger » l'image
+- Recherche instantanée par mot-clé (compatible avec le filtre de catégorie et la pagination)
+- Pagination adaptative (24 produits par page), masquée tant qu'il n'y a qu'une page ; remise à la page 1 à chaque changement de filtre ou de recherche
+- Prix affichés sur les cartes, fiche détaillée (modale), bouton « Commander » via WhatsApp et bouton « Télécharger » une fiche **PDF** autonome (image intégrée + prix + caractéristiques)
 - Boutons d'action (Voir les produits / Nous contacter) dans le bandeau d'accueil
 - Formulaire de contact envoyant le message via WhatsApp
 - Lien WhatsApp direct
 - Mode sombre / clair
 - Bilingue français / anglais (sélecteur FR/EN, choix mémorisé)
+- SEO : meta description, balises Open Graph, favicon, thème coloré
+- Mentions légales et confidentialité dans le pied de page, bouton « Retour en haut »
 - Compteur de visites (GoatCounter)
 
 ## Structure
@@ -25,6 +29,8 @@ index.css         Styles
 js/i18n.js        Traductions FR / EN des textes de l'interface uniquement
 js/products.js    Catégories + produits (textes, prix, photo, caractéristiques)
 js/main.js        Logique : rendu, langues, filtres, modale, commandes, formulaire
+js/thumbnails.js  Miniatures intégrées, chargées uniquement si le fetch échoue (mode hors-ligne)
+assets/favicon.svg Favicon du site
 ```
 
 ## Ajouter ou modifier un produit
@@ -37,7 +43,11 @@ Tout se passe dans **`js/products.js`** (un seul fichier) :
 
 La carte, le badge prix, la fiche détaillée et les boutons « Détails / Commander /
 Télécharger » sont générés automatiquement. **Aucune modification de `i18n.js`, de
-`index.html` ou du CSS n'est nécessaire.**
+`index.html` ou du CSS n'est nécessaire.
+
+Note : si tu remplaces des photos et que tu veux que le téléchargement PDF fonctionne
+aussi hors-ligne (`file://`), il faut régénérer `js/thumbnails.js` (miniatures intégrées).
+En ligne, le PDF utilise directement les vraies photos, donc rien à faire.**
 
 Pour corriger un prix : changer uniquement la valeur `price` du produit concerné.
 Pour remplacer une photo : changer uniquement la valeur `image`.
